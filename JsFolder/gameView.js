@@ -5,7 +5,7 @@ function updateViewGame() {
     html += `
     Logget inn som: ${model.currentUser}<button onclick="logOut()">Logg ut</button><br>
     
-    <button onclick="generateRandomWord(); createGameObject()">Start</button>
+    <button onclick="generateRandomWord(); createGameObject();">Start</button>
     <button onclick="updateViewResult()">Resultat</button> 
     <button onclick="updateViewLeaderBoard()">Poengtavle</button><br>
     
@@ -17,6 +17,7 @@ function updateViewGame() {
 
     if (model.playerList[model.userIndex].game[model.currentGameIndex] == null) {
         html += "Trykk på start for å starte spillet"
+
     } else {
         html += drawRestOfthePage();
     }

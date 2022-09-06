@@ -100,21 +100,21 @@ function pushGuessedWord() {
     })
 
 }
- 
- 
 
 
 
 
-gettekst()
-async function gettekst(){
-    let response = await fetch("Ordliste5Bokstaver.txt");
-    let text = await response.text()
-    let fjernNewlineOgDiv = await text.replace(/\r\n/g, " ")
-    let stringArray = await fjernNewlineOgDiv.toString().split(" "); 
-    model.wordsList5Letters = stringArray 
-}
-+
+
+
+// gettekst()
+// async function gettekst(){
+//     let response = await fetch("Ordliste5Bokstaver.txt");
+//     let text = await response.text()
+//     let fjernNewlineOgDiv = await text.replace(/\r\n/g, " ")
+//     let stringArray = await fjernNewlineOgDiv.toString().split(" "); 
+//     model.wordsList5Letters = stringArray 
+// }
+// +
 // function pushGames() {
 
 
@@ -191,5 +191,3 @@ function changeColor() {
 
     updateViewGame();
 }
-
-
