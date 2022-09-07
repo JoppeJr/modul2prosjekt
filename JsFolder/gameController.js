@@ -48,7 +48,7 @@ function generateRandomWord() {
 
 
 
-    let newWordList = model.randomWordArray.filter(i => i != model.randomWord);
+    let newWordList = model.jsonWords.filter(i => i != model.randomWord);
     let random = Math.floor(Math.random() * newWordList.length);
     model.randomWord = newWordList[random];
     console.log(model.randomWord)
