@@ -26,12 +26,14 @@ function checkWord() {
 
             console.log('game finished');
             model.currentPage = 'win';
+            model.guessedWord.word = '';
             updateView();
 
         } else {
 
             checkGuessedWord();
             zeroPoints()
+            model.guessedWord.word = '';
             updateViewGame()
         }
 
@@ -180,38 +182,41 @@ function pushGuessedWord() {
 
 
 
-function changeColor() {
+function changeColor(i) {
 
-    model.clicks++
-        console.log(model.clicks)
-    if (model.clicks == 0) {
-        model.color = ''
-    }
-    if (model.clicks == 1) {
-        model.color = "red"
-    }
-    if (model.clicks == 2) {
-        model.color = 'green'
-    }
-    if (model.clicks == 3) {
-        model.color = '#00FFFF'
-    }
-    if (model.clicks == 4) {
-        model.color = 'yellow'
-    }
+    i.
 
-    if (model.clicks == 5) {
-        model.color = 'purple'
 
-    }
-    if (model.clicks == 6) {
-        model.color = 'black'
+    // model.clicks++
+    //     console.log(model.clicks)
+    // if (model.clicks == 0) {
+    //     model.color = ''
+    // }
+    // if (model.clicks == 1) {
+    //     model.color = "red"
+    // }
+    // if (model.clicks == 2) {
+    //     model.color = 'green'
+    // }
+    // if (model.clicks == 3) {
+    //     model.color = '#00FFFF'
+    // }
+    // if (model.clicks == 4) {
+    //     model.color = 'yellow'
+    // }
 
-    }
-    if (model.clicks == 7) {
-        model.color = ''
-        model.clicks = 0
-    }
+    // if (model.clicks == 5) {
+    //     model.color = 'purple'
+
+    // }
+    // if (model.clicks == 6) {
+    //     model.color = 'black'
+
+    // }
+    // if (model.clicks == 7) {
+    //     model.color = ''
+    //     model.clicks = 0
+    // }
 
 
 

@@ -53,35 +53,7 @@ function drawRestOfthePage() {
     return `
     <hr><br> 
     <div> 
-        <button style ="background-color:${model.color};"onclick="changeColor()">A</button> 
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">B</button> 
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">C</button>
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">D</button> 
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">E</button> 
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">F</button></br>
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">G</button>
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">H</button>
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">I&nbsp;</button> 
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">J&nbsp;</button> 
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">K</button>
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">L</button></br> 
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">M</button> 
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">N</button>
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">O</button> 
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">P</button> 
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">Q</button>
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">R</button></br> 
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">S</button> 
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">T</button>
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">U</button>
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">V</button> 
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">W</button> 
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">X</button></br> 
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">Y</button>
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">Z</button> 
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">Æ</button> 
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">Ø</button>
-        <button onclick="changeColor(this, 'red', 'green', '#00FFFF', 'yellow'. 'purple', 'black')">Å</button> 
+       ${drawButtons()}
     </div>
     
 
@@ -101,6 +73,16 @@ function drawWinningPage() {
     return `<h3>${model.randomWord}</h3>
     Gratulerer! Du har vunnet!<br>
     <button onclick="generateRandomWord(); createGameObject()">Spill Igjen</button>`;
+}
+
+function drawButtons() {
+    let html = ''
+    let alphabet = 'abcdefghijklmnopqrstuvwxyzæøå'.split('');
+    for (i = 0; i < alphabet.length; i++) {
+        html += `<button>` + alphabet[i] + `</button>`
+    }
+    return html
+
 }
 
 // function drawPageWithoutAttemps(){
