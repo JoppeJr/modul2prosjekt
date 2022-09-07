@@ -1,4 +1,5 @@
 function checkWord() {
+
     if (model.guessedWord.word.length == model.randomWord.length) {
         model.playerList[model.userIndex].game[model.currentGameIndex].attempts++
             //model.currentAttempts++
@@ -28,7 +29,8 @@ function checkWord() {
             updateView();
 
         } else {
-            pushGuessedWord()
+
+            checkGuessedWord();
             zeroPoints()
             updateViewGame()
         }
@@ -43,17 +45,52 @@ function checkWord() {
 
 }
 
+function checkGuessedWord() {
+    let filteredWords = model.jsonWords.filter(i => !i.includes("-") && !i.includes(" ") && !i.includes("."))
+    let array5Letters = filteredWords.filter(i => i.length == 5)
+    if (array5Letters.includes(model.guessedWord.word)) {
+        model.guessedWord.word
+        pushGuessedWord();
+    } else {
+        alert('må gjette et ord')
+        model.playerList[model.userIndex].game[model.currentGameIndex].attempts--
+
+    }
+}
+
 //start
 function generateRandomWord() {
-
-
-
-    let newWordList = model.jsonWords.filter(i => i != model.randomWord);
+    let filteredWords = model.jsonWords.filter(i => !i.includes("-") && !i.includes(" ") && !i.includes("."))
+    let array5Letters = filteredWords.filter(i => i.length == 5)
+    let newWordList = array5Letters.filter(i => i != model.randomWord);
     let random = Math.floor(Math.random() * newWordList.length);
     model.randomWord = newWordList[random];
+    checkRandomWord();
     console.log(model.randomWord)
 
 
+
+}
+
+function checkRandomWord() {
+    if (separateAndCheckLetters()) {
+        model.randomWord
+    } else {
+        generateRandomWord();
+    }
+}
+
+function separateAndCheckLetters() {
+    let letters = model.randomWord.split("");
+    //let thisLetter = letters.some(letter => letter == "A");
+    for (i = 0; i < letters.length; i++) {
+        for (j = i + 1; j < letters.length; j++) {
+            if (letters[i] == letters[j]) {
+                return false
+            }
+        }
+    }
+    return true
 
 }
 
@@ -94,6 +131,7 @@ function createGameObject() {
 
 
 function pushGuessedWord() {
+
     model.guessedWordList.push({
         word: model.guessedWord.word,
         points: model.guessedWord.points
@@ -140,19 +178,7 @@ function pushGuessedWord() {
 
 
 
-function separateAndCheckLetters() {
-    let letters = model.guessedWord.word.split("");
-    //let thisLetter = letters.some(letter => letter == "A");
-    for (i = 0; i < letters.length; i++) {
-        for (j = i + 1; j < letters.length; j++) {
-            if (letters[i] == letters[j]) {
-                return false
-            }
-        }
-    }
-    return true
 
-}
 
 function changeColor() {
 
