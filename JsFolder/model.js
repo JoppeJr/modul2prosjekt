@@ -10,7 +10,12 @@ const model = {
         currentGameIndex: null, // satt for testing vanligvis null
 
         randomWord: "",
-        color: " ",
+        color: [
+
+        ],
+
+
+
         clicks: 0,
 
         // currentAttempts: null,
@@ -70,3 +75,4 @@ const model = {
     // rolig nedtonet farger. 
     // vise hvordan 2 player ser ut for hver av spillerene 
     // https://ord.uib.no/bm/fil/lemma.json
+    // ? i hjørnet med on over, med regler og forklaringer
