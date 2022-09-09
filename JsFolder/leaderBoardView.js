@@ -1,26 +1,19 @@
 function updateViewLeaderBoard() {
-
-
-
-
-
+    model.playerList.forEach(player => creation(player))
 
     document.getElementById('app').innerHTML = `
- Logget inn som: ${model.currentUser}
- <button onclick="logOut()">Logg ut</button><br>
- 
- <button onclick="updateViewGame()">Spill igjen</button>
- <button onclick="updateViewResult()">Resultat</button>
- <button onclick="updateViewLeaderBoard()">Poengtavle</button>
-
- <h2>Poengtavle</h2><br>
- <button onclick="bestGame()" >Beste forsøk</button> <button onclick="bestAttempts()">Beste gjennomsnitt</button>
- <hr>
- ${drawLeaderBoard()}
- `;
-
-
-
+     Logget inn som: ${model.currentUser}
+     <button onclick="logOut()">Logg ut</button><br>
+     
+     <button onclick="updateViewGame()">Spill igjen</button>
+     <button onclick="updateViewResult()">Resultat</button>
+     <button onclick="updateViewLeaderBoard()">Poengtavle</button>
+  
+     <h2>Poengtavle</h2><br>
+     <button onclick="bestGame()" >Beste forsøk</button> <button onclick="bestAttempts()">Beste gjennomsnitt</button>
+     <hr>
+     ${drawLeaderBoard()}
+     `;
 
 
 
@@ -31,12 +24,34 @@ function updateViewLeaderBoard() {
 function drawLeaderBoard() {
     let playersHtml = "";
 
-    model.playerList.forEach(player => playersHtml += findGamesFromEachPlayer(player));
+    if (model.filterby == " ") {
+        model.playerList.forEach(player => playersHtml += findGamesFromEachPlayer(player));
+    }
+    if (model.filterby == "best") {
+        playersHtml = model.leaderBoardInput
+    }
+    if (model.filterby == "attempts") {
+        playersHtml = model.leaderBoardInput
+    }
     return playersHtml
 
 }
 
 
+function creation(player) {
+    let FinishedGames = player.game.filter(game => game.finished == true)
+    let sortedGames = FinishedGames.sort(compareAttempts);
+    let totalGamesAttempts = FinishedGames.reduce((a, b) => ({ attempts: a.attempts + b.attempts }))
+    let average = totalGamesAttempts.attempts / FinishedGames.length
+
+    const newObj = {
+        userName: player.userName,
+        bestGame: sortedGames[0].attempts,
+        average: average
+    }
+
+    model.leaderBoardList.push(newObj)
+}
 
 
 function findGamesFromEachPlayer(player) {
@@ -46,23 +61,9 @@ function findGamesFromEachPlayer(player) {
     let totalGamesAttempts = FinishedGames.reduce((a, b) => ({ attempts: a.attempts + b.attempts }))
     let average = totalGamesAttempts.attempts / FinishedGames.length
 
-
-    const newObj = {
-        userName: player.userName,
-        bestGame: sortedGames[0].attempts,
-        average: average
-    }
-
-
-
-    model.leaderBoardList.push(newObj)
-
-
     html += `Spiller - ${player.userName} <br>
-          Beste spill - ${sortedGames[0].attempts} forsøk <br>
-          Gjennomsnitt - ${average}<hr>`
-
-
+              Beste spill - ${sortedGames[0].attempts} forsøk <br>
+              Gjennomsnitt - ${average}<hr>`
 
     return html
 
@@ -79,31 +80,41 @@ function compareBestAverage(a, b) {
 
 function bestGame() {
     let html = ""
-    const unique = [...new Map(model.leaderBoardList.map((m) => [m.userName, m])).values()];
-    unique.sort(compareBestGame)
+    model.leaderBoardList.sort(compareBestGame)
+    const unique = model.leaderBoardList.filter((v, i, a) => a.findIndex(v2 => (v2.userName === v.userName)) === i)
+
     for (i = 0; i < unique.length; i++) {
-        html += `Spiller - ${unique[i].userName} <br>
-          Beste spill - ${unique[i].bestGame} forsøk <br>
-          Gjennomsnitt - ${unique[i].average}<hr>`
+        html += `Spiller - ${ unique[i].userName} <br>
+              Beste spill - ${ unique[i].bestGame} forsøk <br>
+              Gjennomsnitt - ${ unique[i].average}<hr>`
         console.log(unique[i].userName, unique[i].bestGame, unique[i].average)
 
     }
-    return html
+    //  model.currentPage = "leaderBoard";
+    model.leaderBoardInput = html
+    model.filterby = "best";
 
+    //  return html
+    updateViewLeaderBoard();
 }
 
 function bestAttempts() {
     let html = ""
-    const unique = [...new Map(model.leaderBoardList.map((m) => [m.userName, m])).values()];
-    unique.sort(compareBestAverage)
+    model.leaderBoardList.sort(compareBestAverage)
+    const unique = model.leaderBoardList.filter((v, i, a) => a.findIndex(v2 => (v2.userName === v.userName)) === i)
     for (i = 0; i < unique.length; i++) {
         html += `Spiller - ${unique[i].userName} <br>
-          Beste spill - ${unique[i].bestGame} forsøk <br>
-          Gjennomsnitt - ${unique[i].average}<hr>`
+              Beste spill - ${unique[i].bestGame} forsøk <br>
+              Gjennomsnitt - ${unique[i].average}<hr>`
         console.log(unique[i].userName, unique[i].bestGame, unique[i].average)
 
     }
-    return html
+    //  return html
+    // model.currentPage = "leaderBoard";
+    model.filterby = "attempts";
+    model.leaderBoardInput = html
+
+    updateViewLeaderBoard()
 
 
 
