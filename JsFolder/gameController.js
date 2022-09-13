@@ -42,33 +42,73 @@ function checkWord() {
 
 
     } else {
-        alert("the word you guessed has to be 5 charachters")
+        alert("Ordet du gjetter må være på " + model.difficulty + " bokstaver!")
     }
 
 }
 
 function checkGuessedWord() {
     let filteredWords = model.jsonWords.filter(i => !i.includes("-") && !i.includes(" ") && !i.includes("."))
-    let array5Letters = filteredWords.filter(i => i.length == 5)
-    if (array5Letters.includes(model.guessedWord.word)) {
-        model.guessedWord.word
-        pushGuessedWord();
-    } else {
-        alert('må gjette et ord')
-        model.playerList[model.userIndex].game[model.currentGameIndex].attempts--
-
+    if(model.difficulty == "fem"){
+            let array5Letters = filteredWords.filter(i => i.length == 5)
+     if (array5Letters.includes(model.guessedWord.word)) {
+            model.guessedWord.word
+            pushGuessedWord(); }   
+            else {
+            alert('må gjette et ord')
+            model.playerList[model.userIndex].game[model.currentGameIndex].attempts--}
     }
+    if(model.difficulty == "syv"){
+        let array7Letters = filteredWords.filter(i => i.length == 7)
+    if (array7Letters.includes(model.guessedWord.word)) {
+        model.guessedWord.word
+        pushGuessedWord(); }   
+        else {
+        alert('må gjette et ord')
+        model.playerList[model.userIndex].game[model.currentGameIndex].attempts--}
+}
+    if(model.difficulty == "ni"){
+        let array9Letters = filteredWords.filter(i => i.length == 9)
+    if (array9Letters.includes(model.guessedWord.word)) {
+        model.guessedWord.word
+        pushGuessedWord(); }   
+        else {
+        alert('må gjette et ord')
+        model.playerList[model.userIndex].game[model.currentGameIndex].attempts--}
+    }
+
+    
 }
 
 //start
 function generateRandomWord() {
     let filteredWords = model.jsonWords.filter(i => !i.includes("-") && !i.includes(" ") && !i.includes("."))
-    let array5Letters = filteredWords.filter(i => i.length == 5)
-    let newWordList = array5Letters.filter(i => i != model.randomWord);
-    let random = Math.floor(Math.random() * newWordList.length);
-    model.randomWord = newWordList[random];
-    checkRandomWord();
-    console.log(model.randomWord)
+
+    if( model.difficulty == "fem"){
+        let array5Letters = filteredWords.filter(i => i.length == 5)
+        let newWordList = array5Letters.filter(i => i != model.randomWord);
+        let random = Math.floor(Math.random() * newWordList.length);
+        model.randomWord = newWordList[random];
+        checkRandomWord()
+        console.log(model.randomWord)
+    }
+    if(model.difficulty == "syv"){
+        let array7Letters = filteredWords.filter(i => i.length == 7)
+        let newWordList = array7Letters.filter(i => i != model.randomWord);
+        let random = Math.floor(Math.random() * newWordList.length);
+        model.randomWord = newWordList[random];
+        checkRandomWord();
+        console.log(model.randomWord)
+    }
+    if(model.difficulty == "ni"){
+        let array9Letters = filteredWords.filter(i => i.length == 9)
+        let newWordList = array9Letters.filter(i => i != model.randomWord);
+        let random = Math.floor(Math.random() * newWordList.length);
+        model.randomWord = newWordList[random];
+        checkRandomWord();
+        console.log(model.randomWord)
+    }
+    
 
 
 
@@ -182,43 +222,139 @@ function pushGuessedWord() {
 
 
 
-function changeColor(i) {
-
-    i.
+function changeColor(index) {
 
 
-    // model.clicks++
-    //     console.log(model.clicks)
-    // if (model.clicks == 0) {
-    //     model.color = ''
-    // }
-    // if (model.clicks == 1) {
-    //     model.color = "red"
-    // }
-    // if (model.clicks == 2) {
-    //     model.color = 'green'
-    // }
-    // if (model.clicks == 3) {
-    //     model.color = '#00FFFF'
-    // }
-    // if (model.clicks == 4) {
-    //     model.color = 'yellow'
-    // }
+if( model.difficulty == "fem") { 
+    model.theNewArray[index].clicks++
+        
+    if (model.theNewArray[index].clicks == 0) {
+        model.theNewArray[index].color = ''
+    }
+    if (model.theNewArray[index].clicks == 1) {
+        model.theNewArray[index].color = "red"
+    }
+    if (model.theNewArray[index].clicks == 2) {
+        model.theNewArray[index].color = 'green'
+    }
+    if (model.theNewArray[index].clicks == 3) {
+        model.theNewArray[index].color = '#00FFFF'
+    }
+    if (model.theNewArray[index].clicks == 4) {
+        model.theNewArray[index].color = 'yellow'
+    }
 
-    // if (model.clicks == 5) {
-    //     model.color = 'purple'
+    if (model.theNewArray[index].clicks == 5) {
+        model.theNewArray[index].color = 'purple'
 
-    // }
-    // if (model.clicks == 6) {
-    //     model.color = 'black'
+    }
+    if (model.theNewArray[index].clicks == 6) {
+        model.theNewArray[index].color = 'black'
 
-    // }
-    // if (model.clicks == 7) {
-    //     model.color = ''
-    //     model.clicks = 0
-    // }
+    }
+    if (model.theNewArray[index].clicks >= 7) {
+        model.theNewArray[index].color = ''
+        model.theNewArray[index].clicks = 0
+    } 
+    updateViewGame(); }
 
 
+    if(model.difficulty == "syv")
+    {
+        model.theNewArray[index].clicks++
+        console.log(model.clicks)
+    if (model.theNewArray[index].clicks == 0) {
+        model.theNewArray[index].color = ''
+    }
+    if (model.theNewArray[index].clicks == 1) {
+        model.theNewArray[index].color = "red"
+    }
+    if (model.theNewArray[index].clicks == 2) {
+        model.theNewArray[index].color = 'green'
+    }
+    if (model.theNewArray[index].clicks == 3) {
+        model.theNewArray[index].color = '#00FFFF'
+    }
+    if (model.theNewArray[index].clicks == 4) {
+        model.theNewArray[index].color = 'yellow'
+    }
 
+    if (model.theNewArray[index].clicks == 5) {
+        model.theNewArray[index].color = 'purple'
+
+    }
+    if (model.theNewArray[index].clicks == 6) {
+        model.theNewArray[index].color = 'orange'
+
+    }
+    if (model.theNewArray[index].clicks == 7) {
+        model.theNewArray[index].color = 'blue'
+       
+    }   if (model.theNewArray[index].clicks == 8) {
+        model.theNewArray[index].color = 'black'
+       
+    }  
+    if (model.theNewArray[index].clicks >= 9) {
+        model.theNewArray[index].color = ''
+        model.theNewArray[index].clicks = 0
+    }  
     updateViewGame();
+    
+}
+if(model.difficulty == "ni")
+{
+    model.theNewArray[index].clicks++
+    
+if (model.theNewArray[index].clicks == 0) {
+    model.theNewArray[index].color = ''
+    model.theNewArray[index].clicks = 0
+}
+if (model.theNewArray[index].clicks == 1) {
+    model.theNewArray[index].color = "red"
+}
+if (model.theNewArray[index].clicks == 2) {
+    model.theNewArray[index].color = 'green'
+}
+if (model.theNewArray[index].clicks == 3) {
+    model.theNewArray[index].color = '#00FFFF'
+}
+if (model.theNewArray[index].clicks == 4) {
+    model.theNewArray[index].color = 'yellow'
+}
+
+if (model.theNewArray[index].clicks == 5) {
+    model.theNewArray[index].color = 'purple'
+
+}
+if (model.theNewArray[index].clicks == 6) {
+    model.theNewArray[index].color = 'orange'
+
+}
+if (model.theNewArray[index].clicks == 7) {
+    model.theNewArray[index].color = 'blue'
+   
+}   if (model.theNewArray[index].clicks == 8) {
+    model.theNewArray[index].color = 'pink'
+   
+}  
+if (model.theNewArray[index].clicks == 9) {
+    model.theNewArray[index].color = 'lightgreen'
+   
+}  
+if (model.theNewArray[index].clicks == 10) {
+    model.theNewArray[index].color = 'black'
+   
+}  
+if (model.theNewArray[index].clicks >= 10) {
+    model.theNewArray[index].color = ''
+    model.theNewArray[index].clicks = 0
+   
+}  
+updateViewGame();
+}
+
+    
+
+
+
 }

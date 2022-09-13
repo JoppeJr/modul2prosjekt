@@ -33,32 +33,34 @@ function updateViewGame() {
         let html = ""
         for (i = 0; i < model.guessedWordList.length; i++) {
             let splitedWord = model.guessedWordList[i].word.toUpperCase().split('')
-            html += `
-        <div style="clear: left;">
-        <div style="float:left; background-color: red; padding:1px; width:15px" opacity: 0.7;>${splitedWord[0]}</div> 
-        <div style="float:left; background-color: green;  padding:1px; width:15px">${splitedWord[1]}</div> 
-        <div style="float:left; background-color: #00FFFF;  padding:1px; width:15px">${splitedWord[2]}</div> 
-        <div style="float:left; background-color: yellow;  padding:1px; width:15px">${splitedWord[3]}</div> 
-        <div style="float:left; background-color: purple;  padding:1px; width:15px">${splitedWord[4]}</div>
-        </div> 
-                 points:&nbsp;${model.guessedWordList[i].points}<br>`
+            html += `<div style="clear: left;">`
+            for(j=0; j<splitedWord.length; j++){ 
+            html +=  `
+                <div style="float:left; background-color:${model.color[j]}; padding:1px; width:15px" opacity: 0.7;>${splitedWord[j]}</div>
+                `
+            }
+             
+     
+                html+=  ` </div> points:&nbsp;${model.guessedWordList[i].points}<br>`
 
         }
         return html
     }
-
+   
+        
     function drawRestOfthePage() {
 
         return `
     <hr><br> 
-    <div> 
+    Velg vanskelighetsgrad: 
+    Lett  (5 bokstaver) <input name="difficulty" type="radio" value="fem" onchange="model.difficulty = this.value" class="difficulty-input">
+    Medium (7 bokstaver)<input name="difficulty" type="radio" value="syv" onchange="model.difficulty = this.value" class="difficulty-input">
+    Vanskelig (9 bokstaver) <input name="difficulty" type="radio" value="ni" onchange="model.difficulty = this.value" class="difficulty-input">
+    <br>
+    
        ${drawButtons()}
     </div>
-    
-
-
-    
-    
+ 
     <h3>_ _ _ _ _ </h3>
     Antall forsøk : ${
         model.playerList[model.userIndex].game[model.currentGameIndex].attempts }<br>
@@ -75,10 +77,11 @@ function updateViewGame() {
     }
 
     function drawButtons() {
+        createStuff()
         let html = ''
         let alphabet = 'abcdefghijklmnopqrstuvwxyzæøå'.split('');
         for (i = 0; i < alphabet.length; i++) {
-            html += `<button onclick="changeColor()" class="abc-btns">` + alphabet[i] + `</button>`
+            html += `<button onclick="changeColor(${i})" class="abc-btns"  style="background-color:${model.theNewArray[i].color};">` + alphabet[i] + `</button>`
                 //console.log([i])
         }
         return html
@@ -96,3 +99,17 @@ function updateViewGame() {
 //     <br>
 //     ${drawPoints()}`
 // } changeColor(this, 'red', 'green', 'lightblue', 'yellow', 'lightgreen')
+
+
+function createStuff(){
+  
+    let alphabet = 'abcdefghijklmnopqrstuvwxyzæøå'.split('');
+    for(i = 0; i<alphabet.length ; i++){
+        const newobj = {
+            letter: alphabet[i],
+            clicks: 0,
+            color : ""
+        }
+        model.theNewArray.push(newobj)
+    }
+}

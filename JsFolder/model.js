@@ -10,14 +10,12 @@ const model = {
         currentGameIndex: null, // satt for testing vanligvis null
 
         randomWord: "",
-        color: [
+        color: ["red", "green", "#00FFFF","yellow","purple","orange","blue","pink","lightgreen" ],
 
-        ],
+        filterby: "",
 
-
-
-        clicks: 0,
-
+       
+        theNewArray : [],
         // currentAttempts: null,
 
         thisPlayer: "",
@@ -37,6 +35,7 @@ const model = {
             points: 0
         },
 
+        difficulty:"",
 
 
 
