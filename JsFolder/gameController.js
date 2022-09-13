@@ -164,6 +164,8 @@ function createGameObject() {
     //empty guessedWordList
     model.guessedWordList.length = 0
 
+  model.theNewArray = []
+
 
 
     updateViewGame();
@@ -180,43 +182,6 @@ function pushGuessedWord() {
     })
 
 }
-
-
-
-
-
-
-// gettekst()
-// async function gettekst(){
-//     let response = await fetch("Ordliste5Bokstaver.txt");
-//     let text = await response.text()
-//     let fjernNewlineOgDiv = await text.replace(/\r\n/g, " ")
-//     let stringArray = await fjernNewlineOgDiv.toString().split(" "); 
-//     model.wordsList5Letters = stringArray 
-// }
-// +
-// function pushGames() {
-
-
-
-//     for (i = 0; i < model.playerList.length; i++) {
-//         if (model.playerList[i].game.gotPushed = false) {
-//             model.leaderBoardList.push.apply(model.leaderBoardList, model.playerList[i].game);
-//             model.playerList[i].gamegotPushed = true
-//             console.log('hello')
-//         }
-
-
-
-
-
-//     }
-
-//     model.leaderBoardList.sort(compareAttempts)
-
-
-
-// }
 
 
 
