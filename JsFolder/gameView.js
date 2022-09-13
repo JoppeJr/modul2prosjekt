@@ -34,28 +34,28 @@ function updateViewGame() {
         for (i = 0; i < model.guessedWordList.length; i++) {
             let splitedWord = model.guessedWordList[i].word.toUpperCase().split('')
             html += `<div style="clear: left;">`
-            for(j=0; j<splitedWord.length; j++){ 
-            html +=  `
+            for (j = 0; j < splitedWord.length; j++) {
+                html += `
                 <div style="float:left; background-color:${model.color[j]}; padding:1px; width:15px" opacity: 0.7;>${splitedWord[j]}</div>
                 `
             }
-             
-     
-                html+=  ` </div> points:&nbsp;${model.guessedWordList[i].points}<br>`
+
+
+            html += ` </div> points:&nbsp;${model.guessedWordList[i].points}<br>`
 
         }
         return html
     }
-   
-        
+
+
     function drawRestOfthePage() {
 
         return `
     <hr><br> 
-    Velg vanskelighetsgrad: 
-    Lett  (5 bokstaver) <input name="difficulty" type="radio" value="fem" onchange="model.difficulty = this.value" class="difficulty-input">
-    Medium (7 bokstaver)<input name="difficulty" type="radio" value="syv" onchange="model.difficulty = this.value" class="difficulty-input">
-    Vanskelig (9 bokstaver) <input name="difficulty" type="radio" value="ni" onchange="model.difficulty = this.value" class="difficulty-input">
+    Velg vanskelighetsgrad: <br>
+    Lett  (5 bokstaver) <input name="difficulty" type="radio" value="fem" onchange="model.difficulty = this.value" class="difficulty-input"><br>
+    Medium (7 bokstaver)<input name="difficulty" type="radio" value="syv" onchange="model.difficulty = this.value" class="difficulty-input"><br>
+    Vanskelig (9 bokstaver) <input name="difficulty" type="radio" value="ni" onchange="model.difficulty = this.value" class="difficulty-input"><br>
     <br>
     
        ${drawButtons()}
@@ -101,14 +101,14 @@ function updateViewGame() {
 // } changeColor(this, 'red', 'green', 'lightblue', 'yellow', 'lightgreen')
 
 
-function createStuff(){
-  
+function createStuff() {
+
     let alphabet = 'abcdefghijklmnopqrstuvwxyzæøå'.split('');
-    for(i = 0; i<alphabet.length ; i++){
+    for (i = 0; i < alphabet.length; i++) {
         const newobj = {
             letter: alphabet[i],
             clicks: 0,
-            color : ""
+            color: ""
         }
         model.theNewArray.push(newobj)
     }
