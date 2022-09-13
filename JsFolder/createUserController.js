@@ -26,7 +26,7 @@ function createUser() {
             User.password = model.player.password;
             User.game = [];
             User.result = [];
-            model.currentPage = 'game';
+            model.currentPage = 'menu';
             model.currentUser = User.userName;
             model.playerList.push(User);
 

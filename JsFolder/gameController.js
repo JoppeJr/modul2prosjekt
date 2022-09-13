@@ -105,7 +105,9 @@ function generateRandomWord() {
         let newWordList = array9Letters.filter(i => i != model.randomWord);
         let random = Math.floor(Math.random() * newWordList.length);
         model.randomWord = newWordList[random];
+        console.log(model.randomWord + "first check")
         checkRandomWord();
+        
         console.log(model.randomWord)
     }
     
@@ -153,6 +155,7 @@ function createGameObject() {
     gameobject.gameNumber = model.playerList[model.userIndex].game.length + 1;
     gameobject.date = dateOfGame;
     gameobject.attempts = 0;
+    gameobject.gameDif = model.difficulty
     model.currentGameIndex = model.playerList[model.userIndex].game.length
     gameobject.word = model.randomWord;
     gameobject.finished = false;

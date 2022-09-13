@@ -13,6 +13,7 @@ model.playerList = [
                 word: 'bukse',
                 attempts: 9,
                 finished: true,
+                gameDif: "fem",
             },
             {
                 userName: 'MasterLetters',
@@ -20,7 +21,17 @@ model.playerList = [
                 date: '17/01/2022',
                 word: 'kakse',
                 attempts: 7,
-                finished: false,
+                finished: true,
+                gameDif: "syv",
+            },
+            {
+                userName: 'MasterLetters',
+                gameNumber: 2,
+                date: '17/01/2022',
+                word: 'kakse',
+                attempts: 7,
+                finished: true,
+                gameDif: "ni",
             },
 
         ],
@@ -36,9 +47,10 @@ model.playerList = [
                 userName: 'TheWordBender',
                 gameNumber: 1,
                 date: '16/08/2022',
-                word: 'frisk',
+                word: 'brukbar',
                 attempts: 9,
                 finished: true,
+                gameDif: "syv",
             },
             {
                 userName: 'TheWordBender',
@@ -47,14 +59,16 @@ model.playerList = [
                 word: 'kabel',
                 attempts: 6,
                 finished: true,
+                gameDif: "fem",
             },
             {
                 userName: 'TheWordBender',
                 gameNumber: 3,
                 date: '17/08/2022',
-                word: 'minst',
+                word: 'minstlønn',
                 attempts: 8,
-                finished: false,
+                finished: true,
+                gameDif: "ni",
             },
         ],
         
@@ -72,6 +86,7 @@ model.playerList = [
                 word: 'kjole',
                 attempts: 3,
                 finished: true,
+                gameDif: "fem",
             },
             {
                 userName: 'WordWizzard',
@@ -80,7 +95,17 @@ model.playerList = [
                 word: 'blits',
                 attempts: 4,
                 finished: true,
-            }
+                gameDif: "syv",
+            },
+            {
+                userName: 'MasterLetters',
+                gameNumber: 2,
+                date: '17/01/2022',
+                word: 'kakse',
+                attempts: 7,
+                finished: true,
+                gameDif: "ni",
+            },
         ]
 
     },

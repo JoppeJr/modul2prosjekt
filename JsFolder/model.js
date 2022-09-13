@@ -14,6 +14,10 @@ const model = {
 
         filterby: "",
 
+        leaderDif: "",
+        resultDif: "",
+        leaderBoardDif:"",
+
        
         theNewArray : [],
         // currentAttempts: null,
@@ -57,13 +61,14 @@ const model = {
 
         jsonWords: [],
 
-
+        FinishedGames:[],
 
         leaderBoardList: [
 
         ],
 
-        wordsList5Letters: ""
+        wordsList5Letters: "",
+        html : ""
 
     }
     // color on buttons, ok
@@ -75,3 +80,6 @@ const model = {
     // vise hvordan 2 player ser ut for hver av spillerene 
     // https://ord.uib.no/bm/fil/lemma.json
     // ? i hjørnet med on over, med regler og forklaringer
+
+
+  

@@ -9,6 +9,8 @@
     <script src="JsFolder/model.js"></script>
     <script src="JsFolder/modelplayerlist.js"></script>
     <script src="JsFolder/common.js"></script>
+    <script src="JsFolder/menuView.js"></script>
+    <script src="JsFolder/menuController.js"></script>
     <script src="JsFolder/resultView.js"></script>
     <script src="JsFolder/resultController.js"></script>
     <script src="JsFolder/logInView.js"></script>
@@ -20,6 +22,7 @@
     <script src="JsFolder/createUserView.js"></script>
     <script src="JsFolder/createUserController.js"></script>
     <script src="JsFolder/victoryPage.js"></script>
+    <script src="JsFolder/leaderboardDif.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
@@ -40,6 +43,7 @@
 
             if (model.currentPage == 'login') updateViewLogin();
             if (model.currentPage == 'createUser') updateViewCreate();
+            if (model.currentPage == 'menu') updateViewMenu();
             if (model.currentPage == 'game') updateViewGame();
             if (model.currentPage == 'win') updateViewWin();
             if (model.currentPage == 'resultPage') updateViewResult();

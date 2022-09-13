@@ -7,7 +7,7 @@ if(thisPlayer && thisPassword){
     
     findplayerIndex()
     findGameIndex()
-    updateViewGame()
+    updateViewMenu()
 }
 
 

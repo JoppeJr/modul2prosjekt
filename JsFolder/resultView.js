@@ -3,11 +3,13 @@ function updateViewResult() {
    Logget inn som: ${model.currentUser}
    <button onclick="logOut()">Logg ut</button><br>
    
-   <button onclick="updateViewGame()">Spill igjen</button>
+   <button onclick="updateViewMenu()">Meny</button>
    <button onclick="updateViewResult()">Resultat</button>
-   <button onclick="updateViewLeaderBoard()">Poengtavle</button>
-   <h2>Resultat</h2><hr>
-
+   <button onclick="updateViewLeaderBoardDif()">Poengtavle</button>
+   <h2>Resultat</h2><br>
+    <button value="fem" onclick ="model.resultDif = this.value; updateViewResult()" >Resultat Lett </button>
+    <button value="syv" onclick="model.resultDif = this.value; updateViewResult()">Resultat Medium</button>
+    <button value="ni" onclick="model.resultDif = this.value; updateViewResult()">Resultat Vanskelig</button><hr>
    
     ${createResultHtml()}
    
@@ -26,9 +28,11 @@ function createResultHtml() {
   
     let thisPlayer = model.playerList.find(player => player.userName == model.currentUser);
     let FinishedGames = thisPlayer.game.filter(game => game.finished == true)
+    if(model.resultDif == "fem"){ 
+    let gameDificulty = FinishedGames.filter(value => value.gameDif == "fem")
     if (thisPlayer  ) {
      
-        FinishedGames.sort(compareAttempts);
+        gameDificulty.sort(compareAttempts);
 
         html += ` 
         Ditt gjennomsnitt: ${averageAttempts()}<br><hr>
@@ -36,19 +40,76 @@ function createResultHtml() {
         
         
         Ditt beste spill: <div>
-        <p> Spillnr: ${FinishedGames[0].gameNumber}</p>
-        <p> Ord: ${FinishedGames[0].word}</p>
-        <p> Dato: ${FinishedGames[0].date}</p>
-        <p> Forsøk: ${FinishedGames[0].attempts}</p><hr>
+        <p> Spillnr: ${gameDificulty[0].gameNumber}</p>
+        <p> Ord: ${gameDificulty[0].word}</p>
+        <p> Dato: ${gameDificulty[0].date}</p>
+        <p> Forsøk: ${gameDificulty[0].attempts}</p>
+        <p> Vanskelighetsgrad: ${gameDificulty[0].gameDif} bokstaver</p><hr>
          </div>
          
          Ditt dårligste spill: <div>
-         <p> Spillnr: ${FinishedGames[FinishedGames.length -1].gameNumber}</p>
-         <p> Ord: ${FinishedGames[FinishedGames.length -1].word}</p>
-         <p> Dato: ${FinishedGames[FinishedGames.length -1].date}</p>
-         <p> Forsøk: ${FinishedGames[FinishedGames.length -1].attempts}</p><hr>
+         <p> Spillnr: ${gameDificulty[gameDificulty.length -1].gameNumber}</p>
+         <p> Ord: ${gameDificulty[gameDificulty.length -1].word}</p>
+         <p> Dato: ${gameDificulty[gameDificulty.length -1].date}</p>
+         <p> Forsøk: ${gameDificulty[gameDificulty.length -1].attempts}</p>
+         <p> Vanskelighetsgrad: ${gameDificulty[gameDificulty.length -1].gameDif} bokstaver</p><hr>
           </div> `;
-    }
+    }  }
+    if(model.resultDif == "syv"){ 
+        let gameDificulty = FinishedGames.filter(value => value.gameDif == "syv")
+        if (thisPlayer  ) {
+         
+            gameDificulty.sort(compareAttempts);
+    
+            html += ` 
+            Ditt gjennomsnitt: ${averageAttempts()}<br><hr>
+            
+            
+            
+            Ditt beste spill: <div>
+            <p> Spillnr: ${gameDificulty[0].gameNumber}</p>
+            <p> Ord: ${gameDificulty[0].word}</p>
+            <p> Dato: ${gameDificulty[0].date}</p>
+            <p> Forsøk: ${gameDificulty[0].attempts}</p>
+            <p> Vanskelighetsgrad: ${gameDificulty[0].gameDif} bokstaver</p><hr>
+             </div>
+             
+             Ditt dårligste spill: <div>
+             <p> Spillnr: ${gameDificulty[gameDificulty.length -1].gameNumber}</p>
+             <p> Ord: ${gameDificulty[gameDificulty.length -1].word}</p>
+             <p> Dato: ${gameDificulty[gameDificulty.length -1].date}</p>
+             <p> Forsøk: ${gameDificulty[gameDificulty.length -1].attempts}</p>
+             <p> Vanskelighetsgrad: ${gameDificulty[gameDificulty.length -1].gameDif} bokstaver</p><hr>
+              </div> `;
+        }  }
+        if(model.resultDif == "ni"){ 
+            let gameDificulty = FinishedGames.filter(value => value.gameDif == "ni")
+            if (thisPlayer  ) {
+             
+                gameDificulty.sort(compareAttempts);
+        
+                html += ` 
+                Ditt gjennomsnitt: ${averageAttempts()}<br><hr>
+                
+                
+                
+                Ditt beste spill: <div>
+                <p> Spillnr: ${gameDificulty[0].gameNumber}</p>
+                <p> Ord: ${gameDificulty[0].word}</p>
+                <p> Dato: ${gameDificulty[0].date}</p>
+                <p> Forsøk: ${gameDificulty[0].attempts}</p>
+                <p> Vanskelighetsgrad: ${gameDificulty[0].gameDif} bokstaver</p><hr>
+                 </div>
+                 
+                 Ditt dårligste spill: <div>
+                 <p> Spillnr: ${gameDificulty[gameDificulty.length -1].gameNumber}</p>
+                 <p> Ord: ${gameDificulty[gameDificulty.length -1].word}</p>
+                 <p> Dato: ${gameDificulty[gameDificulty.length -1].date}</p>
+                 <p> Forsøk: ${gameDificulty[gameDificulty.length -1].attempts}</p>
+                 <p> Vanskelighetsgrad: ${gameDificulty[gameDificulty.length -1].gameDif} bokstaver</p><hr>
+                  </div> `;
+            }  }
+    
 
 
 
@@ -61,10 +122,36 @@ function createResultHtml() {
 function averageAttempts() {
     let thisPlayer = model.playerList.find(player => player.userName == model.currentUser)
     let FinishedGames = thisPlayer.game.filter(game => game.finished == true)
-    let totalAttempts = FinishedGames.reduce((a, b) => ({ attempts: a.attempts + b.attempts }));
     
-    let fullNumber = Math.round(totalAttempts.attempts / FinishedGames.length)
+    if( model.resultDif == "fem"){
+        let gameDificulty = FinishedGames.filter(value => value.gameDif == "fem")
+        
+    let totalAttempts = gameDificulty.reduce((a, b) => ({ attempts: a.attempts + b.attempts }));
+    
+    let fullNumber = Math.round(totalAttempts.attempts /gameDificulty.length)
     return Math.round(fullNumber)
+
+    }
+    if( model.resultDif == "syv"){
+        let gameDificulty = FinishedGames.filter(value => value.gameDif == "syv")
+        
+    let totalAttempts = gameDificulty.reduce((a, b) => ({ attempts: a.attempts + b.attempts }));
+    
+    let fullNumber = Math.round(totalAttempts.attempts / gameDificulty.length)
+    return Math.round(fullNumber)
+
+    }
+    if( model.resultDif == "ni"){
+        let gameDificulty =FinishedGames.filter(value => value.gameDif == "ni")
+        
+    let totalAttempts = gameDificulty.reduce((a, b) => ({ attempts: a.attempts + b.attempts }));
+    
+    let fullNumber = Math.round(totalAttempts.attempts / gameDificulty.length)
+    return Math.round(fullNumber)
+
+    }
+
+   
 
 }
 

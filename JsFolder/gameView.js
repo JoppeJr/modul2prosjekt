@@ -3,12 +3,13 @@ function updateViewGame() {
 
     let html = ""
     html += `
-    <div class="current-user">Logget inn som:</div>${model.currentUser}
-    <button onclick="logOut()" class="logout-btn">Logg ut</button><br>
+    <div class="current-user">Logget inn som:  
+    <span class="current-username">${model.currentUser} </span>
+    <button onclick="logOut()" class="logout-btn">Logg ut</button></div><br>
     
-    <button onclick="generateRandomWord(); createGameObject();" class="buttons">Start</button>
+    <button onclick="updateViewMenu()" class="buttons">Meny</button>
     <button onclick="updateViewResult()" class="buttons">Resultat</button> 
-    <button onclick="updateViewLeaderBoard()" class="buttons">Poengtavle</button><br>
+    <button onclick="updateViewLeaderBoardDif()" class="buttons">Poengtavle</button><br>
     
  `;
     // page cant be draw if game object still dsnt exist, game object is created in game control
@@ -17,7 +18,7 @@ function updateViewGame() {
     //model.currentAttempts
 
     if (model.playerList[model.userIndex].game[model.currentGameIndex] == null) {
-        html += "Trykk på start for å starte spillet"
+        html += `<div class="start-text">Trykk på start for å starte spillet</div>`
 
     } else {
         html += drawRestOfthePage();
@@ -52,16 +53,11 @@ function updateViewGame() {
 
         return `
     <hr><br> 
-    Velg vanskelighetsgrad: <br>
-    Lett  (5 bokstaver) <input name="difficulty" type="radio" value="fem" onchange="model.difficulty = this.value" class="difficulty-input"><br>
-    Medium (7 bokstaver)<input name="difficulty" type="radio" value="syv" onchange="model.difficulty = this.value" class="difficulty-input"><br>
-    Vanskelig (9 bokstaver) <input name="difficulty" type="radio" value="ni" onchange="model.difficulty = this.value" class="difficulty-input"><br>
-    <br>
-    
+   
        ${drawButtons()}
     </div>
  
-    <h3>_ _ _ _ _ </h3>
+    <h3>${showChar()}</h3><br>
     Antall forsøk : ${
         model.playerList[model.userIndex].game[model.currentGameIndex].attempts }<br>
     <input type="text" oninput="model.guessedWord.word= this.value"><br>
@@ -113,3 +109,18 @@ function createStuff() {
         model.theNewArray.push(newobj)
     }
 }
+
+function showChar() {
+    model.html = ''
+    
+    let randomWordArray = []
+    for (let i = 0; i < model.randomWord.length; i++) {
+      randomWordArray.push(" ");
+    }
+    for(i=0;i< randomWordArray.length; i++)
+    {
+        model.html += `<div style="float: left; border: solid ${model.color[i]} 3px; height: 15px; width: 15px; "> ${randomWordArray[i]}</div>`
+
+    }
+    return model.html
+  }
