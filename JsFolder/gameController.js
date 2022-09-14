@@ -98,17 +98,17 @@ function generateRandomWord() {
         let random = Math.floor(Math.random() * newWordList.length);
         model.randomWord = newWordList[random];
         checkRandomWord();
-        console.log(model.randomWord)
+        //console.log(model.randomWord)
     }
     if(model.difficulty == "ni"){
         let array9Letters = filteredWords.filter(i => i.length == 9)
         let newWordList = array9Letters.filter(i => i != model.randomWord);
         let random = Math.floor(Math.random() * newWordList.length);
         model.randomWord = newWordList[random];
-        console.log(model.randomWord + "first check")
+        //console.log(model.randomWord + "first check")
         checkRandomWord();
         
-        console.log(model.randomWord)
+        //console.log(model.randomWord)
     }
     
 
