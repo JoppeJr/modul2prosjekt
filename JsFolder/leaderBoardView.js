@@ -23,13 +23,13 @@ function updateViewLeaderBoard() {
 function tellLevel(){
     let html = ""
     if(model.leaderDif == "fem"){
-        html+= `<div>EASY GAMES</div>`
+        html+= `<div>LETT</div>`
     }
     if(model.leaderDif == "syv"){
-        html+= `<div>MEDIUM GAMES</div>`
+        html+= `<div>MEDIUM</div>`
     }
     if(model.leaderDif == "ni"){
-        html+= `<div>HARD GAMES</div>`
+        html+= `<div>VANSKELIG</div>`
     }
     return html
 }

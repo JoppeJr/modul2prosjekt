@@ -1,6 +1,5 @@
 body {
     background-color: #bceaee80
-
 }
 
 h1 {
@@ -42,13 +41,17 @@ input {
     align-items: center;
 }
 
+.attempts-div {
+    margin-top: 20px;
+}
+
+
 .logout-btn {
     opacity: 0.7;
     font-family: 'Carter One', cursive;
     font-size: 10px;
     height: 20px;
     width: 10%;
-
 }
 
 .current-user {
@@ -66,6 +69,17 @@ input {
     width: 5%;
     height: 20px;
 }
+
+.play-btn {
+    width: 10%;
+}
+
+.lb-btns {
+    width: 46%;
+    font-size: 15px;
+}
+
+
 
 button {
   align-items: center;
@@ -114,10 +128,7 @@ button {
   transform: translateY(2px);
 }
 
-.lb-btns {
-    width: 46%;
-    font-size: 15px;
-}
+
 
 /* .result-btn {
     font-size: 15px;
@@ -133,5 +144,4 @@ button {
     margin: 10%;
     text-align: center;
 }
-
 

@@ -9,7 +9,7 @@ function updateViewGame() {
     
     <button onclick="updateViewMenu()" class="buttons">Meny</button>
     <button onclick="updateViewResult()" class="buttons">Resultat</button> 
-    <button onclick="updateViewLeaderBoardDif()" class="buttons">Poengtavle</button><br>
+    <button onclick="updateViewLeaderboardDif()" class="buttons">Poengtavle</button><br>
     
  `;
     // page cant be draw if game object still dsnt exist, game object is created in game control
@@ -32,17 +32,18 @@ function updateViewGame() {
 
     function drawPoints() {
         let html = ""
+        
         for (i = 0; i < model.guessedWordList.length; i++) {
             let splitedWord = model.guessedWordList[i].word.toUpperCase().split('')
-            html += `<div style="clear: left;">`
+            html += `<div style="display: flex; justify-content: center;">` 
             for (j = 0; j < splitedWord.length; j++) {
                 html += `
-                <div style="float:left; background-color:${model.color[j]}; padding:1px; width:15px" opacity: 0.7;>${splitedWord[j]}</div>
+                <div style=" flex-direction: row; background-color:${model.color[j]}; padding:1px; width:15px" opacity: 0.7;>${splitedWord[j]}</div>
                 `
             }
 
 
-            html += ` </div> points:&nbsp;${model.guessedWordList[i].points}<br>`
+            html +=` points:&nbsp;${model.guessedWordList[i].points}<br></div> `
 
         }
         return html
@@ -58,8 +59,8 @@ function updateViewGame() {
     </div>
  
     <h3>${showChar()}</h3><br>
-    Antall forsøk : ${
-        model.playerList[model.userIndex].game[model.currentGameIndex].attempts }<br>
+    <div class="attempts-div">Antall forsøk : ${
+        model.playerList[model.userIndex].game[model.currentGameIndex].attempts } </div><br>
     <input type="text" oninput="model.guessedWord.word= this.value" class="guess-input"><br>
     <button onclick="checkWord()">Gjett</button>
     <br>
@@ -112,15 +113,26 @@ function createStuff() {
 
 function showChar() {
     model.html = ''
+     let guessedWordSplited = []
+      guessedWordSplited = model.guessedWord.word.split("")
+    
     
     let randomWordArray = []
     for (let i = 0; i < model.randomWord.length; i++) {
       randomWordArray.push(" ");
     }
+    
+    model.html += `<div style="display: flex; justify-content: center;">`
     for(i=0;i< randomWordArray.length; i++)
     {
-        model.html += `<div style="float: left; border: solid ${model.color[i]} 3px; height: 15px; width: 15px; "> ${randomWordArray[i]}</div>`
+        model.html += `
+        <div style=" float: left;border: solid black 1.5px; background-color:  ${model.color[i]} ; height: 30px; width: 30px; 
+        "class="char-div"> ${randomWordArray[i]} </div>
+       `
 
     }
+    model.html += `</div>`;
+    
+    ;
     return model.html
   }

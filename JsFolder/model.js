@@ -10,7 +10,7 @@ const model = {
         currentGameIndex: null, // satt for testing vanligvis null
 
         randomWord: "",
-        color: ["red", "green", "#00FFFF","yellow","purple","orange","blue","pink","lightgreen" ],
+        color: ["red", "green", "#00FFFF80","yellow","purple","orange","blue","pink","lightgreen" ],
 
         filterby: "",
 

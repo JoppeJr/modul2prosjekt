@@ -7,13 +7,13 @@ function updateViewMenu(){
     <span class="current-username">${model.currentUser} </span>
     <button onclick="logOut()" class="logout-btn">Logg ut</button></div><br>
     
-    <button onclick="updateViewResult()" class="buttons">Resultat</button> 
-    <button onclick="updateViewLeaderboardDif()" class="buttons">Poengtavle</button><br>
+    <button onclick="updateViewResult()">Resultat</button> 
+    <button onclick="updateViewLeaderboardDif()">Poengtavle</button><br>
     <hr><br> 
     Velg vanskelighetsgrad for å starte spillet <br>
-    Lett  (5 bokstaver) <button value="fem" onclick="model.difficulty = this.value; generateRandomWord(); createGameObject();" >Spill</button><br>
-    Medium (7 bokstaver)<button value="syv" onclick="model.difficulty = this.value; generateRandomWord(); createGameObject();" >Spill </button><br>
-    Vanskelig (9 bokstaver) <button value="ni" onclick="model.difficulty = this.value; generateRandomWord(); createGameObject();">Spill </button> 
+    Lett  (5 bokstaver) <button value="fem" onclick="model.difficulty = this.value; generateRandomWord(); createGameObject();" class="play-btn">Spill</button><br>
+    Medium (7 bokstaver)<button value="syv" onclick="model.difficulty = this.value; generateRandomWord(); createGameObject();" class="play-btn">Spill </button><br>
+    Vanskelig (9 bokstaver) <button value="ni" onclick="model.difficulty = this.value; generateRandomWord(); createGameObject();" class="play-btn">Spill </button> 
     <br><hr>
 
     <h4>Regler</h4><br>
