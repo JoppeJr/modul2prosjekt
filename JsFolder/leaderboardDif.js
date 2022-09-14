@@ -3,7 +3,8 @@ function updateViewLeaderboardDif(){
     let html = '';
 
     html += `
-    <div class="current-user">Logget inn som:</div>${model.currentUser}
+    <div class="current-user">Logget inn som:  
+    <span class="current-username">${model.currentUser} </span>
     <button onclick="logOut()" class="logout-btn">Logg ut</button><br>
     
     <br><hr>

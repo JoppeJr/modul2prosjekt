@@ -60,7 +60,7 @@ function updateViewGame() {
     <h3>${showChar()}</h3><br>
     Antall forsøk : ${
         model.playerList[model.userIndex].game[model.currentGameIndex].attempts }<br>
-    <input type="text" oninput="model.guessedWord.word= this.value"><br>
+    <input type="text" oninput="model.guessedWord.word= this.value" class="guess-input"><br>
     <button onclick="checkWord()">Gjett</button>
     <br>
     ${drawPoints()}`

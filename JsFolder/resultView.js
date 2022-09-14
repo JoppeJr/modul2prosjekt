@@ -1,15 +1,16 @@
 function updateViewResult() {
     document.getElementById('app').innerHTML = `
-   Logget inn som: ${model.currentUser}
-   <button onclick="logOut()">Logg ut</button><br>
+    <div class="current-user">Logget inn som:  
+    <span class="current-username">${model.currentUser} </span>
+    <button onclick="logOut()" class="logout-btn">Logg ut</button></div><br>
    
    <button onclick="updateViewMenu()">Meny</button>
    <button onclick="updateViewResult()">Resultat</button>
-   <button onclick="updateViewLeaderBoardDif()">Poengtavle</button>
+   <button onclick="updateViewLeaderboardDif()">Poengtavle</button>
    <h2>Resultat</h2><br>
-    <button value="fem" onclick ="model.resultDif = this.value; updateViewResult()" >Resultat Lett </button>
-    <button value="syv" onclick="model.resultDif = this.value; updateViewResult()">Resultat Medium</button>
-    <button value="ni" onclick="model.resultDif = this.value; updateViewResult()">Resultat Vanskelig</button><hr>
+    <button value="fem" onclick ="model.resultDif = this.value; updateViewResult()" class="result-btn">Lett</button>
+    <button value="syv" onclick="model.resultDif = this.value; updateViewResult()" class="result-btn">Medium</button>
+    <button value="ni" onclick="model.resultDif = this.value; updateViewResult()" class="result-btn">Vanskelig</button><hr>
    
     ${createResultHtml()}
    

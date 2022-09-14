@@ -1,8 +1,9 @@
 function updateViewWin() {
     console.log('running')
     document.getElementById('app').innerHTML = `
-    Logget inn som: ${model.currentUser}
-    <button onclick="logOut()">Logg ut</button><br>
+    <div class="current-user">Logget inn som:  
+    <span class="current-username">${model.currentUser} </span>
+    <button onclick="logOut()" class="logout-btn">Logg ut</button></div><br>
     <button onclick="updateViewMenu()">Meny</button>
     <button onclick="updateViewResult()">Resultat</button>
     <button onclick="updateViewLeaderboardDif()">Poengtavle</button><br>
