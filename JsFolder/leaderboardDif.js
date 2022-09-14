@@ -12,9 +12,9 @@ function updateViewLeaderboardDif(){
     <h2>Poengtavle</h2><br>
     
     <br><hr>
-    <button value="fem" onclick="model.leaderDif = this.value; updateViewLeaderBoard(); bestGame();" >Easy</button> 
+    <button value="fem" onclick="model.leaderDif = this.value; updateViewLeaderBoard(); bestGame();" >Lett</button> 
     <button value="syv" onclick="model.leaderDif = this.value; updateViewLeaderBoard(); bestGame();" >Medium</button> 
-    <button value="ni" onclick="model.leaderDif = this.value; updateViewLeaderBoard(); bestGame();" >Hard</button> 
+    <button value="ni" onclick="model.leaderDif = this.value; updateViewLeaderBoard(); bestGame();" >Vanskelig</button> 
     
     `;
 
