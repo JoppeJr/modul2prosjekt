@@ -37,9 +37,9 @@ function tellLevel(){
 function drawLeaderBoard() {
     let playersHtml = "";
 
-    if (model.filterby == " ") {
-        model.playerList.forEach(player => playersHtml += findGamesFromEachPlayer(player));
-    }
+    // if (model.filterby == " ") {
+    //     model.playerList.forEach(player => playersHtml += findGamesFromEachPlayer(player));
+    // }
     if (model.filterby == "best") {
         playersHtml = model.leaderBoardInput
     }
@@ -105,20 +105,20 @@ function creation(player) {
 }
 
 
-function findGamesFromEachPlayer(player) {
-    let html = ""
-    let FinishedGames = player.game.filter(game => game.finished == true)
-    let sortedGames = FinishedGames.sort(compareAttempts);
-    let totalGamesAttempts = FinishedGames.reduce((a, b) => ({ attempts: a.attempts + b.attempts }))
-    let average = totalGamesAttempts.attempts / FinishedGames.length
+// function findGamesFromEachPlayer(player) {
+//     let html = ""
+//     let FinishedGames = player.game.filter(game => game.finished == true)
+//     let sortedGames = FinishedGames.sort(compareAttempts);
+//     let totalGamesAttempts = FinishedGames.reduce((a, b) => ({ attempts: a.attempts + b.attempts }))
+//     let average = totalGamesAttempts.attempts / FinishedGames.length
 
-    html += `Spiller - ${player.userName} <br>
-              Beste spill - ${sortedGames[0].attempts} forsøk <br>
-              Gjennomsnitt - ${average}<hr>`
+//     html += `Spiller - ${player.userName} <br>
+//               Beste spill - ${sortedGames[0].attempts} forsøk <br>
+//               Gjennomsnitt - ${average}<hr>`
 
-    return html
+//     return html
 
-}
+// }
 
 
 function compareBestGame(a, b) {
