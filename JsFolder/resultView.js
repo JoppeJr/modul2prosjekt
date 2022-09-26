@@ -18,9 +18,7 @@ function updateViewResult() {
    `;
 }
 
-function compareAttempts(a, b) {
-    return a.attempts - b.attempts;
-}
+
 
 function createResultHtml() {
 
@@ -31,7 +29,7 @@ function createResultHtml() {
     let FinishedGames = thisPlayer.game.filter(game => game.finished == true)
     if(model.resultDif == "fem"){ 
     let gameDificulty = FinishedGames.filter(value => value.gameDif == "fem")
-    if (thisPlayer  ) {
+    if (thisPlayer && gameDificulty.length>0 ) {
      
         gameDificulty.sort(compareAttempts);
 
@@ -55,10 +53,13 @@ function createResultHtml() {
          <p> Forsøk: ${gameDificulty[gameDificulty.length -1].attempts}</p>
          <p> Vanskelighetsgrad: ${gameDificulty[gameDificulty.length -1].gameDif} bokstaver</p><hr>
           </div> `;
-    }  }
+    } 
+    else {html += `du har ikke spilt Lett ennå`}
+    
+ }
     if(model.resultDif == "syv"){ 
         let gameDificulty = FinishedGames.filter(value => value.gameDif == "syv")
-        if (thisPlayer  ) {
+        if (thisPlayer && gameDificulty.length>0 ) {
          
             gameDificulty.sort(compareAttempts);
     
@@ -82,10 +83,12 @@ function createResultHtml() {
              <p> Forsøk: ${gameDificulty[gameDificulty.length -1].attempts}</p>
              <p> Vanskelighetsgrad: ${gameDificulty[gameDificulty.length -1].gameDif} bokstaver</p><hr>
               </div> `;
-        }  }
+        }  
+    else {html += `du har ikke spilt Medium ennå`}
+}
         if(model.resultDif == "ni"){ 
             let gameDificulty = FinishedGames.filter(value => value.gameDif == "ni")
-            if (thisPlayer  ) {
+            if (thisPlayer && gameDificulty.length>0 ) {
              
                 gameDificulty.sort(compareAttempts);
         
@@ -109,7 +112,9 @@ function createResultHtml() {
                  <p> Forsøk: ${gameDificulty[gameDificulty.length -1].attempts}</p>
                  <p> Vanskelighetsgrad: ${gameDificulty[gameDificulty.length -1].gameDif} bokstaver</p><hr>
                   </div> `;
-            }  }
+            } 
+            else {html += `du har ikke spilt Vanskelig ennå`}
+         }
     
 
 
@@ -120,41 +125,7 @@ function createResultHtml() {
 
 
 
-function averageAttempts() {
-    let thisPlayer = model.playerList.find(player => player.userName == model.currentUser)
-    let FinishedGames = thisPlayer.game.filter(game => game.finished == true)
-    
-    if( model.resultDif == "fem"){
-        let gameDificulty = FinishedGames.filter(value => value.gameDif == "fem")
-        
-    let totalAttempts = gameDificulty.reduce((a, b) => ({ attempts: a.attempts + b.attempts }));
-    
-    let fullNumber = Math.round(totalAttempts.attempts /gameDificulty.length)
-    return Math.round(fullNumber)
 
-    }
-    if( model.resultDif == "syv"){
-        let gameDificulty = FinishedGames.filter(value => value.gameDif == "syv")
-        
-    let totalAttempts = gameDificulty.reduce((a, b) => ({ attempts: a.attempts + b.attempts }));
-    
-    let fullNumber = Math.round(totalAttempts.attempts / gameDificulty.length)
-    return Math.round(fullNumber)
-
-    }
-    if( model.resultDif == "ni"){
-        let gameDificulty =FinishedGames.filter(value => value.gameDif == "ni")
-        
-    let totalAttempts = gameDificulty.reduce((a, b) => ({ attempts: a.attempts + b.attempts }));
-    
-    let fullNumber = Math.round(totalAttempts.attempts / gameDificulty.length)
-    return Math.round(fullNumber)
-
-    }
-
-   
-
-}
 
 
 
