@@ -20,16 +20,16 @@ function updateViewLeaderBoard() {
 
 }
 
-function tellLevel(){
+function tellLevel() {
     let html = ""
-    if(model.leaderDif == "fem"){
-        html+= `<div>LETT</div>`
+    if (model.leaderDif == "fem") {
+        html += `<div>LETT</div>`
     }
-    if(model.leaderDif == "syv"){
-        html+= `<div>MEDIUM</div>`
+    if (model.leaderDif == "syv") {
+        html += `<div>MEDIUM</div>`
     }
-    if(model.leaderDif == "ni"){
-        html+= `<div>VANSKELIG</div>`
+    if (model.leaderDif == "ni") {
+        html += `<div>VANSKELIG</div>`
     }
     return html
 }
@@ -37,9 +37,6 @@ function tellLevel(){
 function drawLeaderBoard() {
     let playersHtml = "";
 
-    // if (model.filterby == " ") {
-    //     model.playerList.forEach(player => playersHtml += findGamesFromEachPlayer(player));
-    // }
     if (model.filterby == "best") {
         playersHtml = model.leaderBoardInput
     }
@@ -55,124 +52,130 @@ function drawLeaderBoard() {
 
 function bestGame() {
     let html = ""
-    
-    if(model.leaderDif == "fem"){ 
-    let filteredEasy = model.leaderBoardList.filter(game => game.gameDif == "fem")
-    filteredEasy.sort(compareBestGame)
-    const unique = filteredEasy.filter((v, i, a) => a.findIndex(v2 => (v2.userName === v.userName )) === i)
 
-    for (i = 0; i < unique.length; i++) {
-        html += `Spiller - ${ unique[i].userName} <br>
+    if (model.leaderDif == "fem") {
+        let filteredEasy = model.leaderBoardList.filter(game => game.gameDif == "fem")
+        filteredEasy.sort(compareBestGame)
+        const unique = filteredEasy.filter((v, i, a) => a.findIndex(v2 => (v2.userName === v.userName)) === i)
+
+        for (i = 0; i < unique.length; i++) {
+            html += `Spiller - ${ unique[i].userName} <br>
               Beste spill - ${ unique[i].bestGame} forsøk <br>
               Gjennomsnitt - ${ unique[i].average}<hr>`
-        console.log(unique)
+            console.log(unique)
 
+        }
+
+        model.leaderBoardInput = html
+        model.filterby = "best";
+
+
+        updateViewLeaderBoard();
     }
-    //  model.currentPage = "leaderBoard";
-    model.leaderBoardInput = html
-    model.filterby = "best";
 
-    //  return html
-    updateViewLeaderBoard(); }
-
-    if(model.leaderDif == "syv"){ 
+    if (model.leaderDif == "syv") {
         let filteredMedium = model.leaderBoardList.filter(game => game.gameDif == "syv")
         filteredMedium.sort(compareBestGame)
-        const unique = filteredMedium.filter((v, i, a) => a.findIndex(v2 => (v2.userName === v.userName )) === i)
-    
+        const unique = filteredMedium.filter((v, i, a) => a.findIndex(v2 => (v2.userName === v.userName)) === i)
+
         for (i = 0; i < unique.length; i++) {
             html += `Spiller - ${ unique[i].userName} <br>
                   Beste spill - ${ unique[i].bestGame} forsøk <br>
                   Gjennomsnitt - ${ unique[i].average}<hr>`
             console.log(unique)
-    
+
         }
-        //  model.currentPage = "leaderBoard";
+
         model.leaderBoardInput = html
         model.filterby = "best";
-    
-        //  return html
-        updateViewLeaderBoard(); }
 
-        if(model.leaderDif == "ni"){ 
-            let filteredHard = model.leaderBoardList.filter(game => game.gameDif == "ni")
-            filteredHard.sort(compareBestGame)
-            const unique = filteredHard.filter((v, i, a) => a.findIndex(v2 => (v2.userName === v.userName )) === i)
-        
-            for (i = 0; i < unique.length; i++) {
-                html += `Spiller - ${ unique[i].userName} <br>
+
+        updateViewLeaderBoard();
+    }
+
+    if (model.leaderDif == "ni") {
+        let filteredHard = model.leaderBoardList.filter(game => game.gameDif == "ni")
+        filteredHard.sort(compareBestGame)
+        const unique = filteredHard.filter((v, i, a) => a.findIndex(v2 => (v2.userName === v.userName)) === i)
+
+        for (i = 0; i < unique.length; i++) {
+            html += `Spiller - ${ unique[i].userName} <br>
                       Beste spill - ${ unique[i].bestGame} forsøk <br>
                       Gjennomsnitt - ${ unique[i].average}<hr>`
-                console.log(unique)
-        
-            }
-            //  model.currentPage = "leaderBoard";
-            model.leaderBoardInput = html
-            model.filterby = "best";
-        
-            //  return html
-            updateViewLeaderBoard(); }
+            console.log(unique)
+
+        }
+
+        model.leaderBoardInput = html
+        model.filterby = "best";
+
+
+        updateViewLeaderBoard();
+    }
 }
 
 function bestAttempts() {
     let html = ""
- 
-    if(model.leaderDif == "fem"){ 
+
+    if (model.leaderDif == "fem") {
         let filteredEasy = model.leaderBoardList.filter(game => game.gameDif == "fem")
         filteredEasy.sort(compareBestAverage)
-        const unique = filteredEasy.filter((v, i, a) => a.findIndex(v2 => (v2.userName === v.userName )) === i)
-    
+        const unique = filteredEasy.filter((v, i, a) => a.findIndex(v2 => (v2.userName === v.userName)) === i)
+
         for (i = 0; i < unique.length; i++) {
             html += `Spiller - ${ unique[i].userName} <br>
                   Beste spill - ${ unique[i].bestGame} forsøk <br>
                   Gjennomsnitt - ${ unique[i].average}<hr>`
             console.log(unique)
-    
+
         }
-        //  model.currentPage = "leaderBoard";
+
         model.leaderBoardInput = html
         model.filterby = "attempts";
-    
-        //  return html
-        updateViewLeaderBoard(); }
-    
-        if(model.leaderDif == "syv"){ 
-            let filteredMedium = model.leaderBoardList.filter(game => game.gameDif == "syv")
-            filteredMedium.sort(compareBestAverage)
-            const unique = filteredMedium.filter((v, i, a) => a.findIndex(v2 => (v2.userName === v.userName )) === i)
-        
-            for (i = 0; i < unique.length; i++) {
-                html += `Spiller - ${ unique[i].userName} <br>
+
+
+        updateViewLeaderBoard();
+    }
+
+    if (model.leaderDif == "syv") {
+        let filteredMedium = model.leaderBoardList.filter(game => game.gameDif == "syv")
+        filteredMedium.sort(compareBestAverage)
+        const unique = filteredMedium.filter((v, i, a) => a.findIndex(v2 => (v2.userName === v.userName)) === i)
+
+        for (i = 0; i < unique.length; i++) {
+            html += `Spiller - ${ unique[i].userName} <br>
                       Beste spill - ${ unique[i].bestGame} forsøk <br>
                       Gjennomsnitt - ${ unique[i].average}<hr>`
-                console.log(unique)
-        
-            }
-            //  model.currentPage = "leaderBoard";
-            model.leaderBoardInput = html
-            model.filterby = "attempts";
-        
-            //  return html
-            updateViewLeaderBoard(); }
-    
-            if(model.leaderDif == "ni"){ 
-                let filteredHard = model.leaderBoardList.filter(game => game.gameDif == "ni")
-                filteredHard.sort(compareBestAverage)
-                const unique = filteredHard.filter((v, i, a) => a.findIndex(v2 => (v2.userName === v.userName )) === i)
-            
-                for (i = 0; i < unique.length; i++) {
-                    html += `Spiller - ${ unique[i].userName} <br>
+            console.log(unique)
+
+        }
+
+        model.leaderBoardInput = html
+        model.filterby = "attempts";
+
+
+        updateViewLeaderBoard();
+    }
+
+    if (model.leaderDif == "ni") {
+        let filteredHard = model.leaderBoardList.filter(game => game.gameDif == "ni")
+        filteredHard.sort(compareBestAverage)
+        const unique = filteredHard.filter((v, i, a) => a.findIndex(v2 => (v2.userName === v.userName)) === i)
+
+        for (i = 0; i < unique.length; i++) {
+            html += `Spiller - ${ unique[i].userName} <br>
                           Beste spill - ${ unique[i].bestGame} forsøk <br>
                           Gjennomsnitt - ${ unique[i].average}<hr>`
-                    console.log(unique)
-            
-                }
-                //  model.currentPage = "leaderBoard";
-                model.leaderBoardInput = html
-                model.filterby = "attempts";
-            
-                //  return html
-                updateViewLeaderBoard(); }
+            console.log(unique)
+
+        }
+
+        model.leaderBoardInput = html
+        model.filterby = "attempts";
+
+
+        updateViewLeaderBoard();
+    }
 
 
 

@@ -12,10 +12,7 @@ function updateViewGame() {
     <button onclick="updateViewLeaderboardDif()" class="buttons">Poengtavle</button><br>
     
  `;
-    // page cant be draw if game object still dsnt exist, game object is created in game control
-    // If statment for å starte denne funksjonen ? fikk ikke med oss alt som ble sagt mandag.
-    // model.playerList[model.userIndex].game[model.currentGameIndex]
-    //model.currentAttempts
+
 
     if (model.playerList[model.userIndex].game[model.currentGameIndex] == null) {
         html += `<div class="start-text">Trykk på start for å starte spillet</div>`
@@ -23,7 +20,7 @@ function updateViewGame() {
     } else {
         html += drawRestOfthePage();
     }
-    //html += `A B C D E .... `;  
+
 
 
 
@@ -32,10 +29,10 @@ function updateViewGame() {
 
     function drawPoints() {
         let html = ""
-        
+
         for (i = 0; i < model.guessedWordList.length; i++) {
             let splitedWord = model.guessedWordList[i].word.toUpperCase().split('')
-            html += `<div style="display: flex; justify-content: center;">` 
+            html += `<div style="display: flex; justify-content: center;">`
             for (j = 0; j < splitedWord.length; j++) {
                 html += `
                 <div style=" flex-direction: row; background-color:${model.color[j]}; padding:1px; width:15px" opacity: 0.7;>${splitedWord[j]}</div>
@@ -43,7 +40,7 @@ function updateViewGame() {
             }
 
 
-            html +=` points:&nbsp;${model.guessedWordList[i].points}<br></div> `
+            html += ` points:&nbsp;${model.guessedWordList[i].points}<br></div> `
 
         }
         return html
@@ -79,23 +76,13 @@ function updateViewGame() {
         let alphabet = 'abcdefghijklmnopqrstuvwxyzæøå'.split('');
         for (i = 0; i < alphabet.length; i++) {
             html += `<button onclick="changeColor(${i})" class="abc-btns"  style="background-color:${model.theNewArray[i].color};">` + alphabet[i] + `</button>`
-                //console.log([i])
+
         }
         return html
 
     }
 }
 
-// function drawPageWithoutAttemps(){
-
-//     return `<h3>_ _ _ _ _ </h3>
-//     Antall forsøk : ${
-//         model.playerList[model.userIndex].game[model.currentGameIndex].attempts }<br>
-//     <input type="text" oninput="model.guessedWord.word= this.value"><br>
-//     <button onclick="checkWord()">Gjett</button>
-//     <br>
-//     ${drawPoints()}`
-// } changeColor(this, 'red', 'green', 'lightblue', 'yellow', 'lightgreen')
 
 
 function createStuff() {
@@ -113,18 +100,17 @@ function createStuff() {
 
 function showChar() {
     model.html = ''
-     let guessedWordSplited = []
-      guessedWordSplited = model.guessedWord.word.split("")
-    
-    
+    let guessedWordSplited = []
+    guessedWordSplited = model.guessedWord.word.split("")
+
+
     let randomWordArray = []
     for (let i = 0; i < model.randomWord.length; i++) {
-      randomWordArray.push(" ");
+        randomWordArray.push(" ");
     }
-    
+
     model.html += `<div style="display: flex; justify-content: center;">`
-    for(i=0;i< randomWordArray.length; i++)
-    {
+    for (i = 0; i < randomWordArray.length; i++) {
         model.html += `
         <div style=" float: left;border: solid black 1.5px; background-color:  ${model.color[i]} ; height: 30px; width: 30px; 
         "class="char-div"> ${randomWordArray[i]} </div>
@@ -132,7 +118,7 @@ function showChar() {
 
     }
     model.html += `</div>`;
-    
+
     ;
     return model.html
-  }
+}

@@ -1,4 +1,4 @@
-function updateViewMenu(){
+function updateViewMenu() {
 
     let html = '';
 

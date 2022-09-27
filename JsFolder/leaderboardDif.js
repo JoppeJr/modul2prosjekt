@@ -1,4 +1,4 @@
-function updateViewLeaderboardDif(){
+function updateViewLeaderboardDif() {
 
     let html = '';
 

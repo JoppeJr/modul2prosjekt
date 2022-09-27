@@ -30,7 +30,6 @@ function createUser() {
             model.currentUser = User.userName;
             model.playerList.push(User);
 
-            //GiveUserIndex()
 
         } else { alert('password dont match') }
     }

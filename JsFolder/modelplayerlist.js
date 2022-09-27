@@ -1,5 +1,3 @@
-// data
-
 model.playerList = [
 
     {
@@ -62,7 +60,7 @@ model.playerList = [
             },
 
         ],
-       
+
 
     },
 
@@ -84,7 +82,7 @@ model.playerList = [
                 gameNumber: 4,
                 date: '19/09/2022',
                 word: 'sverm',
-                attempts: 6,
+                attempts: 7,
                 finished: true,
                 gameDif: "fem",
             },
@@ -93,7 +91,7 @@ model.playerList = [
                 gameNumber: 2,
                 date: '17/08/2022',
                 word: 'kabel',
-                attempts: 6,
+                attempts: 7,
                 finished: true,
                 gameDif: "fem",
             },
@@ -125,7 +123,7 @@ model.playerList = [
                 gameDif: "ni",
             },
         ],
-        
+
 
     },
 
@@ -164,11 +162,5 @@ model.playerList = [
 
     },
 
-    // {
-    //     userName: '',
-    //     age: "",
-    //     password: '1212',
-    //     game: [],
-    // },
 
 ]
