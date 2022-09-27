@@ -31,7 +31,7 @@ function getRightFromJson() {
 
 
     }
-    console.log(model.jsonWords)
+
 
 
 

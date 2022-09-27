@@ -18,8 +18,8 @@ function averageAttempts() {
         if (gameDificulty.length > 0) {
             let totalAttempts = gameDificulty.reduce((a, b) => ({ attempts: a.attempts + b.attempts }));
 
-            let fullNumber = Math.round(totalAttempts.attempts / gameDificulty.length)
-            return Math.round(fullNumber)
+            let fullNumber = totalAttempts.attempts / gameDificulty.length
+            return fullNumber
         }
 
     }
