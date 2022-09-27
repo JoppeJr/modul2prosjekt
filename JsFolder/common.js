@@ -24,16 +24,8 @@ function getRightFromJson() {
 
     let jsonArray = model.randomWordArray[0];
 
-
     for (i = 0; i < jsonArray.length; i++) {
 
         model.jsonWords.push(jsonArray[i][0])
-
-
     }
-
-
-
-
-
 }
